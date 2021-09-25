@@ -15,11 +15,11 @@ class CreatePerfilesTable extends Migration
     {
         Schema::create('perfiles', function (Blueprint $table) {
             $table->id();
-            $table->string("nombre")->nullable(false);
-            $table->string("paterno")->nullable(false);
-            $table->string("materno")->nullable(false);
-            $table->string("edad", 2)->nullable(false);
-            $table->string("fecha_nacimiento")->nullable(false);
+            $table->string("nombre");
+            $table->string("paterno");
+            $table->string("materno");
+            $table->string("edad", 2);
+            $table->string("fecha_nacimiento");
             $table->bigInteger("idUsuario")->unsigned();
             $table->foreign("idUsuario")->references("id")->on("usuarios");
             $table->timestamps();

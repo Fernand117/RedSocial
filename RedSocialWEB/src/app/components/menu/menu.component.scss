@@ -1,0 +1,18 @@
+.navbar {
+    background-color: black;
+    a {
+        color: greenyellow;
+    }
+    .navbar-toggler {
+        border-color: greenyellow;
+        color: greenyellow;
+        text-align: center;
+    }
+    .dropdown-menu {
+        margin-left: -50%;
+        color: black;
+        a {
+            color: black
+        }
+    }
+}
