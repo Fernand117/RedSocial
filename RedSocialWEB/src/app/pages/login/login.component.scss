@@ -1,15 +1,16 @@
+.banner {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: rgb(19, 165, 24);
+}
+
 .container {
-    .banner {
-        width: 100%;
-        height: auto;
-        text-align: center;
-        background-color: rgb(19, 165, 24);
-    }
     .formulario {
         width: 70%;
         height: 450px;
         margin: 0 auto;
-        margin-top: 5%;
+        margin-top: 10%;
         border: 1px solid rgb(19, 165, 24);
         border-radius: 5px;
         .contForm {

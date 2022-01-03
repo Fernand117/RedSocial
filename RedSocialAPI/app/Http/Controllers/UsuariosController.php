@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\DB;
 
 class UsuariosController extends Controller
 {
-    public function validarUsuario($us) {
+    public function validarUsuario($us)
+    {
         $usuario = Usuario::where('usuario', '=', $us)->first();
         if ($usuario == null) {
             return false;
@@ -18,7 +19,8 @@ class UsuariosController extends Controller
         }
     }
 
-    public function validarEmail($mail) {
+    public function validarEmail($mail)
+    {
         $email = Usuario::where('email', '=', $mail)->first();
         if ($email == null) {
             return false;
@@ -77,7 +79,6 @@ class UsuariosController extends Controller
             return $state->mensaje('Usuario o contraseña incorrectos', 404);
         } else {
             return $state->mensaje($usuario, 200);
-            //return $state->mensaje('Sesión iniciada correctamente', 200);
         }
     }
 
@@ -95,10 +96,57 @@ class UsuariosController extends Controller
         $perfil->fecha_nacimiento = $datos['fecha_nacimiento'];
         $perfil->idUsuario = $datos['idUsuario'];
         $perfil->save();
+
         if ($usController->validarPerfil($perfil->id) == true) {
             return $state->mensaje('Perfil de usuario creado correctamente', 200);
         } else {
             return $state->mensaje('Error, no se pudo crear su perfil', 404);
         }
+    }
+
+    public function editarPerfil(Request $request)
+    {
+        $datos = $request->all();
+
+        $state = new StateServerController();
+
+		$perfil = Perfil::find($datos['idPerfil']);
+
+        if (isset($datos['nombre'])) {
+            $perfil->nombre = $datos['nombre'];
+        }
+
+        if (isset($datos['paterno'])) {
+            $perfil->paterno = $datos['paterno'];
+        }
+
+        if (isset($datos['materno'])) {
+            $perfil->materno = $datos['materno'];
+        }
+
+        if (isset($datos['edad'])) {
+            $perfil->edad = $datos['edad'];
+        }
+
+        if (isset($datos['fecha_nacimiento'])) {
+            $perfil->fecha_nacimiento = $datos['fecha_nacimiento'];
+        }
+
+        $perfil->update();
+
+        return $state->mensaje($perfil, 200);
+    }
+
+    public function eliminarPerfil(Request $request)
+    {
+        $state = new StateServerController();
+
+        $datos = $request->all();
+        $perfil = Perfil::find($datos['idPerfil']);
+        $usuario = Usuario::find($datos['idUsuario']);
+        $usuario->delete();
+        $perfil->delete();
+
+        return $state->mensaje('Cuenta eliminada correctamente', 200);
     }
 }

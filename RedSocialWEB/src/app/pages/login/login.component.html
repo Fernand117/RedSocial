@@ -1,7 +1,7 @@
+<div class="banner">
+    <h1>BIENVENIDO A SOCIALTECH</h1>
+</div>
 <div class="container">
-    <div class="banner">
-        <h1>BIENVENIDO A SOCIALTECH</h1>
-    </div>
     <div class="formulario">
         <div class="contForm">
             <h3>Inicia sesión para continuar</h3>
@@ -10,7 +10,7 @@
             <label for="password">Contraseña</label>
             <input type="password" name="password" id="password" class="form-control" placeholder="********" [(ngModel)]="usuarioModel.password">
             <button class="btn btn-success" (click)="validarFormulario()">Iniciar sesión</button>
-            <button class="btn btn-danger">Crear cuenta</button>
+            <button class="btn btn-danger" [routerLink]="['/registro']">Crear cuenta</button>
         </div>
     </div>
 </div>

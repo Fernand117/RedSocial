@@ -15,8 +15,8 @@ export class UsuarioModule {
   password: string;
 
   constructor() {
-    this.usuario = "";
-    this.email = "";
-    this.password = "";
+    this.usuario = '';
+    this.email = '';
+    this.password = '';
   }
 }
