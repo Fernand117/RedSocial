@@ -19,6 +19,11 @@ class PostsController extends Controller
         return $state->mensaje($itemPost, 200);
     }
 
+    public function listarPostById($id) {
+        $post = Post::find($id);
+        return $post;
+    }
+
     public function crearPost(Request $request) {
         $datos = $request->all();
 
